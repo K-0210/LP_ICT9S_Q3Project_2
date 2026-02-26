@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        #unselected{
+            color: #e5e5e5;
+        }
+        form{
+            margin-top: 200px;
+        }
+        body{
+            background-color: palevioletred;
+        }
+        .card{
+            background-color: pink;
+            border-radius: 50px;
+        }
+        h2{
+            color: black;
+        }
+        .btn-pink{
+            background-color: hotpink;
+            color: white;
+            border-radius: 20px;
+        }
+        #calc{
+            margin-top: 200px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-4">
+
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="index.html"><img src="obmc-logo.png" class="img-fluid d-flex align-items-center" style="height: 50px"></a>
+
+            <a class="navbar-brand" href="index.html"><img src="obmc-logo-2.png" class="img-fluid d-block mx-auto" style="height: 50px"></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse text-center" id="mynavbar">
+                
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center text-sm-start">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="" id="unselected">Home</a>
+                    </li>
+
+                    <hr class="text-light my-1">
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold text-primary" href="">Route Fares</a>
+                    </li>
+
+                    <hr class="text-light my-1">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="" id="unselected">Schedule</a>
+                    </li>
+
+                    <hr class="text-light my-1">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="" id="unselected">Help</a>
+                    </li>
+
+                </ul>
+
+                <form class="d-flex justify-content-center justify-content-sm-end mt-2 mt-sm-0">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-info" type="button">🔎</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="container" id="calc">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+                
+                <div class="card p-4 shadow">
+                    
+                    <h2 class="text-center mb-4"> Route Fare Calculator</h2>
+                    
+                    <h5 class="fw-bold"> Select your pickup location:</h5>
+                    
+                    <select class="form-control mb-3" id="service">
+                        <option value="0">-- What is your pickup location? --</option>
+                        <option value="1">North Avenue</option>
+                        <option value="2">Quezon Avenue</option>
+                        <option value="3">Kamuning</option>
+                        <option value="4">Araneta Center-Cubao</option>
+                        <option value="5">Santolan-Annapolis</option>
+                        <option value="6">Ortigas</option>
+                        <option value="7">Shaw Boulevard</option> 
+                        <option value="8">Boni</option>
+                        <option value="9">Guadalupe</option>
+                        <option value="10">Buendia</option>
+                        <option value="11">Ayala</option>
+                        <option value="12">Magallanes</option>
+                        <option value="13">Taft Avenue</option>
+                    </select>
+                    
+                    <h5 class="fw-bold"> Enter Distance (km):</h5>
+                    
+                    <select class="form-control mb-3" id="distance">
+                        <option value="0">-- What is your destination? --</option>
+                        <option value="1">North Avenue</option>
+                        <option value="2">Quezon Avenue</option>
+                        <option value="3">Kamuning</option>
+                        <option value="4">Araneta Center-Cubao</option>
+                        <option value="5">Santolan-Annapolis</option>
+                        <option value="6">Ortigas</option>
+                        <option value="7">Shaw Boulevard</option> 
+                        <option value="8">Boni</option>
+                        <option value="9">Guadalupe</option>
+                        <option value="10">Buendia</option>
+                        <option value="11">Ayala</option>
+                        <option value="12">Magallanes</option>
+                        <option value="13">Taft Avenue</option> 
+                    </select>
+                    
+                    <button class="btn btn-pink w-100" onclick="tfare()">Calculate</button>
+
+                    <div id="result"></div>
+                
+                </div>
+        
+            </div>
+        
+        </div>
+    
+    </div>
+    
+    <script>
+        function tfare(){
+        let one = Number(document.getElementById("service").value);
+        let two = Number(document.getElementById("distance").value);
+        let three = Math.abs(one - two);
+
+
+        if (one === 0 || two === 0) {
+            let fare = 0
+            window.alert("Please, choose your pickup location and destination!");
+            return;
+        }
+        
+        if (three >=1){
+            let fare = 13
+        }
+
+        else if (three >=3){
+            let fare = 16
+        }  
+        
+        else if (three >=5){
+            let fare = 20
+        } 
+
+        else if (three >=8){
+            let fare = 24
+        }
+
+        else {
+            let fare = 28
+        }
+
+        document.getElementById("result").innerHTML = "The total travel fare is: "  + fare + "PHP";
+        
+    }
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
