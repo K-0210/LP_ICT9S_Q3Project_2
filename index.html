@@ -74,11 +74,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="" id="unselected">Help</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="form.html" id="unselected">Register</a>
-                    </li>
 
-                    <hr class="text-light my-1">
                 </ul>
 
                 <form class="d-flex justify-content-center justify-content-sm-end mt-2 mt-sm-0">
@@ -157,6 +153,7 @@
         let one = Number(document.getElementById("service").value);
         let two = Number(document.getElementById("distance").value);
         let three = Math.abs(one - two);
+        let fare = 0;
 
 
         if (one === 0 || two === 0) {
@@ -164,25 +161,30 @@
             window.alert("Please, choose your pickup location and destination!");
             return;
         }
+
+        if (three === 0){
+            window.alert("Pickup and destination cannot be the same!");
+        return;
+        }
         
-        if (three >=1){
-            let fare = 13
+        if (three >=11){
+            fare = 28
         }
 
-        else if (three >=3){
-            let fare = 16
+        else if (three >=8){
+            fare = 24
         }  
         
         else if (three >=5){
-            let fare = 20
+            fare = 20
         } 
 
-        else if (three >=8){
-            let fare = 24
+        else if (three >=3){
+            fare = 16
         }
 
         else {
-            let fare = 28
+            fare = 13
         }
 
         document.getElementById("result").innerHTML = "The total travel fare is: "  + fare + "PHP";
